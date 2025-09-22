@@ -1,8 +1,8 @@
-﻿namespace MedicalSchedulerAPI.Models
+﻿namespace MedicalschedulerAPI.Models
 {
-    public class Role
+    public class role
     {
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
+        public int roleid { get; set; }
+        public string rolename { get; set; }
     }
 }

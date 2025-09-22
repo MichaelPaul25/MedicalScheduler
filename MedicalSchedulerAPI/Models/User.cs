@@ -1,12 +1,12 @@
-﻿namespace MedicalSchedulerAPI.Models
+﻿namespace MedicalschedulerAPI.Models
 {
-    public class User
+    public class user
     {
-        public int UserId { get; set; }
-        public string Email { get; set; }
-        public string? DisplayName { get; set; }
-        public string? GoogleId { get; set; }
-        public string? PasswordHash { get; set; }
-        public bool IsPasswordSet { get; set; } = false;
+        public int userid { get; set; }
+        public string email { get; set; }
+        public string? displayname { get; set; }
+        public string? googleid { get; set; }
+        public string? passwordhash { get; set; }
+        public bool ispasswordset { get; set; } = false;
     }
 }

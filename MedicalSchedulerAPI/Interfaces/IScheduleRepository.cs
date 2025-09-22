@@ -1,13 +1,13 @@
-﻿using MedicalSchedulerAPI.Models;
+﻿using MedicalschedulerAPI.Models;
 
-namespace MedicalSchedulerAPI.Interfaces
+namespace MedicalschedulerAPI.Interfaces
 {
-    public interface IScheduleRepository
+    public interface IscheduleRepository
     {
-        Task<IEnumerable<Schedule>> GetAllAsync();
-        Task<Schedule?> GetByIdAsync(int id);
-        Task<Schedule> AddAsync(Schedule schedule);
-        Task<Schedule?> UpdateAsync(Schedule schedule);
+        Task<IEnumerable<schedule>> GetAllAsync();
+        Task<schedule?> GetByIdAsync(int id);
+        Task<schedule> AddAsync(schedule schedule);
+        Task<schedule?> UpdateAsync(schedule schedule);
         Task<bool> DeleteAsync(int id);
     }
 }

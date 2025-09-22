@@ -1,45 +1,45 @@
-﻿using MedicalSchedulerAPI.Data;
-using MedicalSchedulerAPI.Interfaces;
-using MedicalSchedulerAPI.Models;
+﻿using MedicalschedulerAPI.Data;
+using MedicalschedulerAPI.Interfaces;
+using MedicalschedulerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MedicalSchedulerAPI.Repository
+namespace MedicalschedulerAPI.Repository
 {
-    public class ScheduleRepository : IScheduleRepository
+    public class scheduleRepository : IscheduleRepository
     {
         private readonly AppDbContext _context;
 
-        public ScheduleRepository(AppDbContext context)
+        public scheduleRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<Schedule>> GetAllAsync()
+        public async Task<IEnumerable<schedule>> GetAllAsync()
         {
-            return await _context.Schedules.ToListAsync();
+            return await _context.schedules.ToListAsync();
         }
 
-        public async Task<Schedule?> GetByIdAsync(int id)
+        public async Task<schedule?> GetByIdAsync(int id)
         {
-            return await _context.Schedules.FindAsync(id);
+            return await _context.schedules.FindAsync(id);
         }
 
-        public async Task<Schedule> AddAsync(Schedule schedule)
+        public async Task<schedule> AddAsync(schedule schedule)
         {
-            _context.Schedules.Add(schedule);
+            _context.schedules.Add(schedule);
             await _context.SaveChangesAsync();
             return schedule;
         }
 
-        public async Task<Schedule?> UpdateAsync(Schedule schedule)
+        public async Task<schedule?> UpdateAsync(schedule schedule)
         {
-            var existing = await _context.Schedules.FindAsync(schedule.ScheduleId);
+            var existing = await _context.schedules.FindAsync(schedule.scheduleid);
             if (existing == null) return null;
 
-            existing.ScheduleDate = schedule.ScheduleDate;
-            existing.Shift = schedule.Shift;
-            existing.Notes = schedule.Notes;
-            existing.UserId = schedule.UserId;
+            existing.scheduledate = schedule.scheduledate;
+            existing.shift = schedule.shift;
+            existing.notes = schedule.notes;
+            existing.userid = schedule.userid;
 
             await _context.SaveChangesAsync();
             return existing;
@@ -47,10 +47,10 @@ namespace MedicalSchedulerAPI.Repository
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var schedule = await _context.Schedules.FindAsync(id);
+            var schedule = await _context.schedules.FindAsync(id);
             if (schedule == null) return false;
 
-            _context.Schedules.Remove(schedule);
+            _context.schedules.Remove(schedule);
             await _context.SaveChangesAsync();
             return true;
         }

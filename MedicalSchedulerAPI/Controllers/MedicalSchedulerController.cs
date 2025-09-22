@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MedicalSchedulerAPI.Controllers
+namespace MedicalschedulerAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MedicalSchedulerController : Controller
+    public class MedicalschedulerController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

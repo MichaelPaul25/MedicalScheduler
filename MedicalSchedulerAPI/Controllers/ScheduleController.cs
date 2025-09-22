@@ -1,29 +1,29 @@
-﻿using MedicalSchedulerAPI.Interfaces;
-using MedicalSchedulerAPI.Models;
+﻿using MedicalschedulerAPI.Interfaces;
+using MedicalschedulerAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MedicalSchedulerAPI.Controllers
+namespace MedicalschedulerAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ScheduleController : ControllerBase
+    public class scheduleController : Controller
     {
-        private readonly IScheduleRepository _repository;
+        private readonly IscheduleRepository _repository;
 
-        public ScheduleController(IScheduleRepository repository)
+        public scheduleController(IscheduleRepository repository)
         {
             _repository = repository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Schedule>>> GetAll()
+        public async Task<ActionResult<IEnumerable<schedule>>> GetAll()
         {
             var schedules = await _repository.GetAllAsync();
             return Ok(schedules);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Schedule>> GetById(int id)
+        public async Task<ActionResult<schedule>> GetById(int id)
         {
             var schedule = await _repository.GetByIdAsync(id);
             if (schedule == null) return NotFound();
@@ -31,16 +31,16 @@ namespace MedicalSchedulerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Schedule>> Create(Schedule schedule)
+        public async Task<ActionResult<schedule>> Create(schedule schedule)
         {
             var created = await _repository.AddAsync(schedule);
-            return CreatedAtAction(nameof(GetById), new { id = created.ScheduleId }, created);
+            return CreatedAtAction(nameof(GetById), new { id = created.scheduleid }, created);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Schedule>> Update(int id, Schedule schedule)
+        public async Task<ActionResult<schedule>> Update(int id, schedule schedule)
         {
-            if (id != schedule.ScheduleId) return BadRequest();
+            if (id != schedule.scheduleid) return BadRequest();
 
             var updated = await _repository.UpdateAsync(schedule);
             if (updated == null) return NotFound();
@@ -55,6 +55,12 @@ namespace MedicalSchedulerAPI.Controllers
             if (!deleted) return NotFound();
 
             return NoContent();
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return Ok("Hello from Medical Scheduler API");
         }
     }
 }

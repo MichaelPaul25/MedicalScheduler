@@ -1,4 +1,4 @@
-namespace MedicalSchedulerAPI
+namespace MedicalschedulerAPI
 {
     public class WeatherForecast
     {

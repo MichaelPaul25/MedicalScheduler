@@ -1,15 +1,15 @@
-﻿using MedicalSchedulerAPI.Data;
-using MedicalSchedulerAPI.Models;
+﻿using MedicalschedulerAPI.Data;
+using MedicalschedulerAPI.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace MedicalSchedulerAPI.Controllers
+namespace MedicalschedulerAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AuthController : ControllerBase
+    public class AuthController : Controller
     {
         private readonly AppDbContext _context;
         public AuthController(AppDbContext context)
@@ -35,21 +35,27 @@ namespace MedicalSchedulerAPI.Controllers
             var googleId = result.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
 
             // Simpan user ke DB jika belum ada
-            var user = _context.Users.FirstOrDefault(u => u.Email == email);
+            var user = _context.Users.FirstOrDefault(u => u.email == email);
             if (user == null)
             {
-                user = new User
+                user = new user
                 {
-                    Email = email,
-                    DisplayName = name,
-                    GoogleId = googleId,
-                    IsPasswordSet = false
+                    email = email,
+                    displayname = name,
+                    googleid = googleId,
+                    ispasswordset = false
                 };
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
             }
 
             return Redirect(returnUrl);
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return Ok("Hello from Medical Scheduler API");
         }
     }
 }

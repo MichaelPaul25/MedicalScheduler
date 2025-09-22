@@ -1,12 +1,12 @@
-﻿namespace MedicalSchedulerAPI.Models
+﻿namespace MedicalschedulerAPI.Models
 {
-    public class Schedule
+    public class schedule
     {
-        public int ScheduleId { get; set; }
-        public int UserId { get; set; }
-        public DateTime ScheduleDate { get; set; }
-        public string? Shift { get; set; }
-        public string? Notes { get; set; }
-        public int ScheduleActivityId { get; set; }
+        public int scheduleid { get; set; }
+        public int userid { get; set; }
+        public DateTime scheduledate { get; set; }
+        public string? shift { get; set; }
+        public string? notes { get; set; }
+        public int scheduleactivityid { get; set; }
     }
 }

@@ -1,13 +1,13 @@
-﻿namespace MedicalSchedulerAPI.Models
+﻿namespace MedicalschedulerAPI.Models
 {
-    public class ScheduleActivity
+    public class scheduleactivity
     {
-        public int ActivityId { get; set; }
-        public int ScheduleId { get; set; }
-        public int UserId { get; set; }
-        public string Action { get; set; } // create, update, delete
-        public string? OldValue { get; set; }
-        public string? NewValue { get; set; }
-        public DateTime ActionAt { get; set; } = DateTime.UtcNow;
+        public int activityid { get; set; }
+        public int scheduleid { get; set; }
+        public int userid { get; set; }
+        public string action { get; set; } // create, update, delete
+        public string? oldvalue { get; set; }
+        public string? newvalue { get; set; }
+        public DateTime actionat { get; set; } = DateTime.UtcNow;
     }
 }
